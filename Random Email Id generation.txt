@@ -1,0 +1,44 @@
+// function to generate a random string of length n
+	static String getAlphaNumericString() {
+
+		// choose a Character random from this String
+		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+		String Alphabate = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		// create StringBuffer size of AlphaNumericString
+		StringBuilder sb = new StringBuilder(n);
+
+		for (int i = 0; i < n; i++) {
+			if (i == 0) {
+				int index = (int) (Alphabate.length() * Math.random());
+				sb.append(Alphabate.charAt(index));
+			} else {
+				// generate a random number between
+				// 0 to AlphaNumericString variable length
+				int index = (int) (AlphaNumericString.length() * Math.random());
+
+				// add Character one by one in end of sb
+				sb.append(AlphaNumericString.charAt(index));
+
+			}
+		}
+		sb.append(mail);
+		return sb.toString();
+	}
+
+
+
+
+
+
+		// Sending Keys on Email Check as random Mail ID
+		randomMailID = getAlphaNumericString();
+		Thread.sleep(2000);
+		objBaseTest.scrollInView(sharepointOnline(BaseTest.driver));
+		emailCheck(BaseTest.driver).clear();
+		Thread.sleep(1000);
+		emailCheck(BaseTest.driver).sendKeys(randomMailID);
+		objBaseTest.logResults("Sending Keys on Email Check as random Mail ID");
+		Thread.sleep(1000);
+		checkButton(BaseTest.driver).click();
+		objBaseTest.logResults("clicking on Check Button");
